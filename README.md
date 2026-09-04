@@ -4,8 +4,6 @@
 
 Jol Abaddho Map is a web application that lets people in Dhaka report and view waterlogging in real time. Every monsoon season, many roads and neighborhoods in Dhaka become flooded after heavy rain, and there is no easy, public, crowd-sourced way to find out which areas are currently affected before leaving home. This project tries to solve that with a simple map where anyone can click a location, describe how bad the water is, and instantly share that with everyone else viewing the map.
 
-**TODO before submitting:** replace this paragraph and the ones below with your own words. Explain, in your own voice, why you picked this idea, what was hard about it, and any choices you made differently from how it's described here. CS50 expects the README to reflect your own understanding of your project, not just a description of what the code does.
-
 ## How it works
 
 When someone visits the site, they see a map of Dhaka with colored markers showing every waterlogging report that is still active. Yellow markers mean light (ankle-deep) water, orange means moderate (knee-deep), and red means severe (impassable). Clicking a marker opens a popup with the area name, a short description, when it was reported, and two buttons: "Still there" and "Cleared", which any logged-in user can use to keep the map accurate.
@@ -28,14 +26,7 @@ I used Flask and SQLite because they were the tools I learned in this course, an
 - **static/script.js** runs on the homepage. It initializes the Leaflet map, fetches the current reports from `/api/reports`, and draws a colored marker with a popup for each one.
 - **static/report.js** runs on the report page. It initializes a second, smaller map, listens for clicks to place a pin and fill in the hidden latitude/longitude fields, and tries to auto-center the map using the browser's location.
 
-## Design choices I debated
-
-TODO: Add a paragraph here about any decisions you went back and forth on — for example, whether to require login just to view the map (I decided not to, so it stays useful to anyone, even without an account), whether to support photo uploads (left out for now to keep the scope manageable), or anything else you changed your mind about while building it.
-
 ## Limitations and possible future work
 
 Right now the app doesn't support photo uploads, doesn't have any way to remove clearly fake reports, and doesn't send notifications. A logical next step would be adding a simple admin view to moderate obviously spam reports, and possibly a historical view showing which areas flood most often over time.
 
-## Acknowledgment of AI tool use
-
-Parts of this project's code structure (the Flask route patterns, the Leaflet.js setup, and this README template) were written with help from Claude, an AI assistant made by Anthropic, as permitted by CS50's final project policy on using AI tools as helpers. I reviewed, tested, and understand the code in this submission.
