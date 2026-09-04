@@ -1,0 +1,83 @@
+{% extends "layout.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block main %}
+    <p class="intro">
+        See which areas of Dhaka have waterlogging right now, or report one yourself.
+        Reports disappear automatically after 24 hours unless someone confirms the water is still there.
+    </p>
+
+    <div class="dashboard">
+        <div class="map-col">
+            <div id="map"></div>
+            <div class="legend">
+                <span><span class="dot light"></span>Light</span>
+                <span><span class="dot moderate"></span>Moderate</span>
+                <span><span class="dot severe"></span>Severe</span>
+            </div>
+        </div>
+
+        <div class="list-col">
+            <div class="reports-panel">
+                <h2>Active Reports</h2>
+                <div class="sort-buttons">
+                    <button class="sort-btn light" data-severity="light" type="button">Light</button>
+                    <button class="sort-btn moderate" data-severity="moderate" type="button">Moderate</button>
+                    <button class="sort-btn severe" data-severity="severe" type="button">Severe</button>
+                </div>
+                <ul id="reports-list" class="reports-list">
+                    <li class="empty">Loading...</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <section class="emergency-section">
+        <h2>Emergency Control Rooms</h2>
+        <p class="emergency-desc">Direct hotlines for pumping tenders, fallen trees, and stranded electric cables in water.</p>
+
+        <div class="emergency-grid">
+            <div class="emergency-card">
+                <div class="emergency-info">
+                    <div class="emergency-title">NATIONAL EMERGENCY</div>
+                    <div class="emergency-number">999</div>
+                    <div class="emergency-sub">Central Dispatch</div>
+                </div>
+                <a href="tel:999" class="call-btn">CALL</a>
+            </div>
+
+            <div class="emergency-card">
+                <div class="emergency-info">
+                    <div class="emergency-title">DHAKA WASA HELPLINE</div>
+                    <div class="emergency-number">16162</div>
+                    <div class="emergency-sub">WASA Drain Triage</div>
+                </div>
+                <a href="tel:16162" class="call-btn">CALL</a>
+            </div>
+
+            <div class="emergency-card">
+                <div class="emergency-info">
+                    <div class="emergency-title">DNCC CONTROL ROOM</div>
+                    <div class="emergency-number02">02-9894258</div>
+                    <div class="emergency-number02">02-9894335</div>
+                </div>
+                <a href="tel:029894258" class="call-btn">CALL</a>
+            </div>
+
+            <div class="emergency-card">
+                <div class="emergency-info">
+                    <div class="emergency-title">DSCC EMERGENCY UNIT</div>
+                    <div class="emergency-number03">02-9556014</div>
+                    <div class="emergency-number03">01709900703</div>
+                </div>
+                <a href="tel:029556014" class="call-btn">CALL</a>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block scripts %}
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+{% endblock %}

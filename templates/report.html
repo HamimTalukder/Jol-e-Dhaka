@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block title %}Report{% endblock %}
+
+{% block main %}
+    <h1>Report Waterlogging</h1>
+    <p>Click on the map where the water is, then fill in the details below.</p>
+
+    <div id="report-map"></div>
+
+    <form action="/report" method="post" id="report-form">
+        <input type="hidden" name="latitude" id="latitude">
+        <input type="hidden" name="longitude" id="longitude">
+
+        <label for="area_name">Area name (optional)</label>
+        <input type="text" name="area_name" id="area_name" placeholder="e.g. Dhanmondi 27">
+
+        <label for="severity">Severity</label>
+        <select name="severity" id="severity" required>
+            <option value="">-- Select --</option>
+            <option value="light">Light (ankle-deep)</option>
+            <option value="moderate">Moderate (knee-deep)</option>
+            <option value="severe">Severe (impassable)</option>
+        </select>
+
+        <label for="description">Description (optional)</label>
+        <textarea name="description" id="description" rows="3" placeholder="Any other details"></textarea>
+
+        <button type="submit">Submit Report</button>
+    </form>
+{% endblock %}
+
+{% block scripts %}
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="{{ url_for('static', filename='report.js') }}"></script>
+{% endblock %}

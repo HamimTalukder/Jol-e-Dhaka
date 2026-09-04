@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %} - Jol-e-Dhaka</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="/" class="logo">Jol-e-Dhaka</a>
+        <div class="nav-links">
+            {% if session.user_id %}
+                <a href="/report">+ Report</a>
+                <a href="/logout">Log Out</a>
+            {% else %}
+                <a href="/login">Log In</a>
+                <a href="/register">Register</a>
+            {% endif %}
+        </div>
+    </nav>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="flash">
+                {% for message in messages %}
+                    <p>{{ message }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    <main>
+        {% block main %}{% endblock %}
+    </main>
+
+    <footer>
+        <p>Made for CS50x &mdash; crowd-sourced waterlogging reports for Dhaka.</p>
+        <p>Developed by <a href="https://github.com/HamimTalukder" target="_blank">Hamim Talukder</a></p>
+    </footer>
+
+    {% block scripts %}{% endblock %}
+</body>
+</html>
